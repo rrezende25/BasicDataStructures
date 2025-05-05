@@ -37,20 +37,32 @@ int insert_node_in_int_bst(int new_value, int_node **sub_tree_root){
 }
 
 void delete_int_bst_node(int_node **to_delete_node){
-    int_node *right_node, *left_node, *to_insert_rigth_node;
+    int_node *right_node, *left_node, *to_insert_right_node;
     left_node = (*to_delete_node)->left;
     right_node = (*to_delete_node)->right;
+    if(left_node == NULL && right_node == NULL){
+        free(*to_delete_node);
+        *to_delete_node = NULL;
+        return;
+    }
+    if(left_node == NULL){
+        free(*to_delete_node);
+        *to_delete_node = right_node;
+        return; 
+    }
+    if(right_node == NULL){
+        free(*to_delete_node);
+        *to_delete_node = left_node;
+        return; 
+    }
+
     free(*to_delete_node);
     *to_delete_node = left_node;
-    if(left_node != NULL){
-        to_insert_rigth_node = left_node;
-        while (to_insert_rigth_node->right != NULL) {
-            to_insert_rigth_node = to_insert_rigth_node->right; 
-        }
-        to_insert_rigth_node->right = right_node;
-    }else{
-        
+    to_insert_right_node = left_node;
+    while (to_insert_right_node->right != NULL) {
+        to_insert_right_node = to_insert_right_node->right; 
     }
+    to_insert_right_node->right = right_node;
 }
 
 int delete_node_in_int_bst(int to_delete_value, int_node **sub_tree_root){

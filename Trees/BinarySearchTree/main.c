@@ -48,6 +48,18 @@ int main(void){
     delete_status = delete_node_in_int_bst(100, &main_root);
     printf("%i", delete_status);
     printf("\n");
-    // print_tree_in_ascending_order(main_root);
+    print_tree_in_ascending_order(main_root);
+    delete_status = delete_node_in_int_bst(125, &main_root);
+    printf("%i", delete_status);
+    printf("\n");
+    print_tree_in_ascending_order(main_root);
+    delete_status = delete_node_in_int_bst(190, &main_root);
+    printf("%i", delete_status);
+    printf("\n");
+    print_tree_in_ascending_order(main_root);
+    delete_status = delete_node_in_int_bst(145, &main_root);
+    printf("%i", delete_status);
+    printf("\n");
+    print_tree_in_ascending_order(main_root);
     return 0;
 }
